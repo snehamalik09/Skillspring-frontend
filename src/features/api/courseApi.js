@@ -10,7 +10,7 @@ export const courseApi = createApi({
     endpoints: (builder) => ({
         createCourse: builder.mutation({
             query: ({ title, category, price }) => ({
-                url: '/create',
+                url: 'create',
                 method: 'POST',
                 body: { title, category, price },
                 headers: { 'Content-Type': 'application/json' }
@@ -20,7 +20,7 @@ export const courseApi = createApi({
 
         updateCourseById: builder.mutation({
             query: ({ courseId, body }) => ({
-                url: `/course/${courseId}/update`,
+                url: `course/${courseId}/update`,
                 method: 'PUT',
                 body,
             }),
@@ -29,7 +29,7 @@ export const courseApi = createApi({
 
         deleteCourseById: builder.mutation({
             query: (courseId) => ({
-                url: `/course/${courseId}/delete`,
+                url: `course/${courseId}/delete`,
                 method: 'DELETE',
                 headers: { 'Content-Type': 'application/json' }
             }),
@@ -39,7 +39,7 @@ export const courseApi = createApi({
         // courses created by the instructor
         getCoursesByCreator: builder.query({
             query: () => ({
-                url: '/courses',
+                url: 'courses',
                 method: 'GET',
             }),
             providesTags: ['Course']
@@ -47,7 +47,7 @@ export const courseApi = createApi({
 
         getCourseById: builder.query({
             query: (courseId) => ({
-                url: `/course/${courseId}`,
+                url: `course/${courseId}`,
                 method: 'GET',
             }),
             providesTags: ['Course']
@@ -55,7 +55,7 @@ export const courseApi = createApi({
 
         createLecture: builder.mutation({
             query: ({ title, courseId }) => ({
-                url: `/course/${courseId}/lecture`,
+                url: `course/${courseId}/lecture`,
                 method: 'POST',
                 body: { title },
                 headers: { 'Content-Type': 'application/json' }
@@ -65,7 +65,7 @@ export const courseApi = createApi({
 
         getLecture: builder.query({
             query: (courseId) => ({
-                url: `/course/${courseId}/lecture`,
+                url: `course/${courseId}/lecture`,
                 method: 'GET',
             }),
             providesTags: ['Lecture']
@@ -73,7 +73,7 @@ export const courseApi = createApi({
 
         getLectureById: builder.query({
             query: ({ courseId, lectureId }) => ({
-                url: `/course/${courseId}/lecture/${lectureId}`,
+                url: `course/${courseId}/lecture/${lectureId}`,
                 method: 'GET',
             }),
             providesTags: ['Lecture']
@@ -81,7 +81,7 @@ export const courseApi = createApi({
 
         updateLecture: builder.mutation({
             query: ({ lectureId, courseId, ...body }) => ({
-                url: `/course/${courseId}/lecture/${lectureId}`,
+                url: `course/${courseId}/lecture/${lectureId}`,
                 method: 'POST',
                 body,
             }),
@@ -90,7 +90,7 @@ export const courseApi = createApi({
 
         deleteLecture: builder.mutation({
             query: ({ courseId, lectureId }) => ({
-                url: `/course/${courseId}/lecture/${lectureId}`,
+                url: `course/${courseId}/lecture/${lectureId}`,
                 method: 'DELETE',
                 headers: { 'Content-Type': 'application/json' }
             }),
@@ -99,7 +99,7 @@ export const courseApi = createApi({
 
         togglePublishCourse: builder.mutation({
             query: ({ courseId, query }) => ({
-                url: `/course/${courseId}?publish=${query}`,
+                url: `course/${courseId}?publish=${query}`,
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' }
             }),

@@ -10,7 +10,7 @@ export const authApi = createApi({
     endpoints: (builder) => ({
         loginUser: builder.mutation({
             query: (data) => ({
-                url: '/login',
+                url: 'login',
                 method: 'POST',
                 body: data,
                 headers: { 'Content-Type': 'application/json' }
@@ -19,7 +19,7 @@ export const authApi = createApi({
         }),
         registerUser: builder.mutation({
             query: (data) => ({
-                url: '/register',
+                url: 'register',
                 method: 'POST',
                 body: data,
                 headers: { 'Content-Type': 'application/json' }
@@ -27,7 +27,7 @@ export const authApi = createApi({
         }),
         updateUser: builder.mutation({
             query: (formData) => ({
-                url: '/updateProfile',
+                url: 'updateProfile',
                 method: 'PATCH',
                 body: formData,
             }),
@@ -35,7 +35,7 @@ export const authApi = createApi({
         }),
         Profile: builder.query({
             query: () => ({
-                url: '/profile',
+                url: 'profile',
                 method: "GET",
             }),
             providesTags: ['User']
@@ -43,20 +43,20 @@ export const authApi = createApi({
 
         getPublishedCourses: builder.query({
             query: () => ({
-                url: `/courses?isPublished=true`,
+                url: `courses?isPublished=true`,
                 method: 'GET',
             }),
         }),
 
         getEnrolledCourses: builder.query({
             query: () => ({
-                url: `/enrolled-courses`,
+                url: `enrolled-courses`,
                 method: 'GET',
             }),
         }),
 
         getUser: builder.query({
-            query: () => "/check-auth",
+            query: () => "check-auth",
         }),
 
     })
