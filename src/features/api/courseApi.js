@@ -1,5 +1,4 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { createLecture } from '../../../../server/src/controller/Lecture';
 
 export const courseApi = createApi({
     reducerPath: 'courseApi',
