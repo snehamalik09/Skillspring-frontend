@@ -1,8 +1,4 @@
-import Navbar from "../components/Navbar.jsx";
-import CourseCard from "../components/courseCard.jsx";
 import HeroSection from "../components/HeroSection.jsx";
-import SearchSection from "../components/SearchSection.jsx";
-import Courses from './Courses.jsx';
 import Contact from "../components/Contact.jsx";
 import Footer from "../components/Footer.jsx";
 import { useRef } from "react";

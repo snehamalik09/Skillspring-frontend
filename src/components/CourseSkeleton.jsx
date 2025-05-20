@@ -1,31 +1,3 @@
-// import { motion } from 'framer-motion';
-// import { useSelector } from "react-redux";
-
-// const CourseSkeleton = () => {
-//     const isOpen = useSelector((state) => state.navbarToggle.isNavbarOpen);
-
-//     return (
-//         <motion.div
-//             initial={{ scale: 0.90 }}
-//             className={`bg-[#FFF1E0] shadow-md rounded-2xl flex w-full max-w-[80%] mx-auto my-5 overflow-hidden ${isOpen ? 'w-[100%]' : 'w-[80%]'} animate-pulse`}
-//         >
-//             <div className="w-1/3 h-full bg-gray-300 rounded-lg"></div>
-
-//             <div className="w-2/3 p-6 flex flex-col justify-center bg-white text-black">
-//                 <div className="w-3/4 h-4 bg-gray-300 rounded mb-3"></div> 
-//                 <div className="w-1/2 h-3 bg-gray-300 rounded mb-2"></div> 
-//                 <div className="w-1/3 h-4 bg-[#FFF1E0] rounded mb-3"></div>
-//                 <div className="w-full h-20 bg-gray-300 rounded mb-3"></div> 
-//                 <div className="bg-[#192A88] text-white px-6 py-2 rounded-lg cursor-not-allowed opacity-50">
-//                     Enroll
-//                 </div>
-//             </div>
-//         </motion.div>
-//     );
-// };
-
-// export default CourseSkeleton;
-
 import { motion } from 'framer-motion';
 import { useSelector } from "react-redux";
 
