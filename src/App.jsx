@@ -17,14 +17,14 @@ import CourseDetails from './Pages/CourseDetails';
 import EditCourse from './Pages/admin/Course/EditCourse';
 import CreateLecture from './Pages/admin/Lectures/CreateLecture';
 import EditLecture from './Pages/admin/Lectures/EditLecture';
-import PaymentFailed from './pages/PaymentFailed.jsx';
+import PaymentFailed from './Pages/PaymentFailed.jsx';
 import CourseProgress from './Pages/CourseProgress.jsx';
 import SearchPage from './components/SearchPage.jsx';
 import { useDispatch } from 'react-redux';
 import { userLoggedIn, userLoggedOut } from './features/authSlice.js';
 import { useGetUserQuery } from './features/api/authApi.js';
 import Contact from './components/Contact.jsx';
-import PaymentSuccess from './pages/PaymentSuccess.jsx';
+import PaymentSuccess from '.Pages/PaymentSuccess.jsx';
 
 
 function App() {
