@@ -26,7 +26,6 @@ import { useGetUserQuery } from './features/api/authApi.js';
 import Contact from './components/Contact.jsx';
 import PaymentSuccess from './pages/PaymentSuccess.jsx';
 
-
 function App() {
   const dispatch = useDispatch();
   const { data, error, isLoading } = useGetUserQuery();

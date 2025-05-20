@@ -1,3 +1,5 @@
+
+
 import React from 'react'
 import { useLocation } from 'react-router-dom';
 import { FaArrowLeft } from "react-icons/fa";
@@ -55,5 +57,6 @@ const PaymentSuccess = () => {
 }
 
 export default PaymentSuccess
+
 
 
