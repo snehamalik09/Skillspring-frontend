@@ -16,7 +16,6 @@ import AdminDashboard from './Pages/admin/AdminDashboard';
 import CourseDetails from './Pages/CourseDetails';
 import EditCourse from './Pages/admin/Course/EditCourse';
 import CreateLecture from './Pages/admin/Lectures/CreateLecture';
-import Lecture from '../../server/src/models/Lecture.model';
 import EditLecture from './Pages/admin/Lectures/EditLecture';
 import PaymentSuccess from './pages/PaymentSuccess.jsx';
 import PaymentFailed from './pages/PaymentFailed.jsx';
