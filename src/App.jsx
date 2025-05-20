@@ -24,7 +24,7 @@ import { useDispatch } from 'react-redux';
 import { userLoggedIn, userLoggedOut } from './features/authSlice.js';
 import { useGetUserQuery } from './features/api/authApi.js';
 import Contact from './components/Contact.jsx';
-import PaymentSuccess from '.Pages/PaymentSuccess.jsx';
+import PaymentSuccess from './pages/PaymentSuccess.jsx';
 
 
 function App() {
@@ -72,21 +72,3 @@ function App() {
 
 export default App;
 
-
-// Build edit lecture page
-
-
-{/* Text - Deep Teal #005F73
-Highlights - Soft Sage #94B49F
-Background - Warm Sand #E6D5B8
-Primary Buttons -  Bright Coral #FF6B35
-Secondary Buttons - Muted Gold #D4A373
-
-
-
-removeLecture backend not working
-
-
- #F72798 - pink
-#F57D1F - orange
- #EBF400 - yellow  */}
