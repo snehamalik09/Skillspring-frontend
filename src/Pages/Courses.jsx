@@ -6,8 +6,9 @@ import { useGetPublishedCoursesQuery, useProfileQuery } from '../features/api/au
 import { FaSearch } from "react-icons/fa";
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import CoursesPageTopImage from '../assets/CoursesPageTopImage.png'
+// import CoursesPageTopImage from '../assets/CoursesPageTopImage.png'
 import Footer from '../components/Footer.jsx'
+import coursesPageTopImage from '../assets/coursesPageTopImage.png'
 
 function Courses() {
     const skeletons = Array(3).fill(null);
@@ -98,7 +99,7 @@ function Courses() {
 
                     <div className='hidden md:block w-[45%] h-full'>
                         <img
-                            src={CoursesPageTopImage}
+                            src={coursesPageTopImage}
                             alt="Learning illustration"
                             className="w-full h-full object-contain"
                         />
