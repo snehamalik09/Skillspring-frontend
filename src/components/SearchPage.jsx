@@ -6,7 +6,7 @@ import { useGetSearchCoursesQuery } from '../features/api/courseApi';
 import { useSearchParams } from 'react-router-dom';
 import { Blocks } from 'react-loader-spinner';
 import { useState, useEffect } from 'react';
-import CourseCard from './courseCard';
+import CourseCard from './CourseCard';
 import { useProfileQuery } from '../features/api/authApi';
 import Footer from './Footer';
 

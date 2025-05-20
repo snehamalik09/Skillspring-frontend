@@ -1,5 +1,4 @@
-import CourseCard from '../components/courseCard.jsx';
-import CourseSkeleton from '../components/CourseSkeleton.jsx';
+import CourseCard from '../components/CourseCard.jsx';
 import Navbar from '../components/Navbar.jsx';
 import { useState, useEffect, Profiler } from 'react';
 import emptyProfilePicture from '../assets/emptyProfilePicture.webp';

@@ -1,5 +1,4 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
 import { useGetCourseByIdQuery } from '../features/api/courseApi'
 import { useGetLectureQuery } from '../features/api/courseApi'
 import { useParams } from 'react-router-dom'
