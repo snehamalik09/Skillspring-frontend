@@ -57,6 +57,7 @@ export const authApi = createApi({
 
         getUser: builder.query({
             query: () => "check-auth",
+            method: 'GET',
         }),
 
     })
