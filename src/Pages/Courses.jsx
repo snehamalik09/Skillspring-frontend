@@ -1,4 +1,4 @@
-import CourseCard from '../components/courseCard.jsx';
+import CourseCard from '../components/CourseCard.jsx';
 import CourseSkeleton from '../components/CourseSkeleton.jsx';
 import Navbar from '../components/Navbar.jsx';
 import { useSelector, useDispatch } from "react-redux";
