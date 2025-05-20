@@ -6,7 +6,7 @@ import { useGetPublishedCoursesQuery, useProfileQuery } from '../features/api/au
 import { FaSearch } from "react-icons/fa";
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import CoursesPageTopImage from '../assets/CoursesPageTopImage.avif'
+import CoursesPageTopImage from '../assets/CoursesPageTopImage.png'
 import Footer from '../components/Footer.jsx'
 
 function Courses() {
