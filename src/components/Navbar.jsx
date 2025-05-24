@@ -17,9 +17,7 @@ const Navbar = ({ handleScrollToContact }) => {
   console.log("isLoggedIn : ", isLoggedIn);
 
   const handleClick = (path) => {
-    if (!isLoggedIn)
-      navigate("/login");
-    else
+   
       navigate(path);
   }
 
@@ -56,9 +54,7 @@ const Navbar = ({ handleScrollToContact }) => {
           <ul className="flex gap-10 font-semibold">
             <li className="transition duration-200 hover:text-[#192A88] hover:scale-105 active:scale-95" ><Link to="/">Home</Link></li>
             {/* <li className="transition duration-200 hover:text-[#192A88] hover:scale-105 active:scale-95" onClick={() => handleClick("/")}>About</li> */}
-            {isLoggedIn ? (
               <li className="transition duration-200 hover:text-[#192A88] hover:scale-105 active:scale-95" onClick={() => handleClick("/dashboard")}>Dashboard</li>
-            ) : ""}
             <li className="transition duration-200 hover:text-[#192A88] hover:scale-105 active:scale-95" onClick={handleContactClick}>Contact</li>
 
             <li className="transition duration-200 hover:text-[#192A88] hover:scale-105 active:scale-95" onClick={() => handleClick("/courses")}> Courses</li>

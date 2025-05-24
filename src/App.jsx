@@ -27,16 +27,16 @@ import { useGetUserQuery } from './features/api/authApi.js';
 import Contact from './components/Contact.jsx';
 
 function App() {
-  const dispatch = useDispatch();
-  const { data, error, isLoading } = useGetUserQuery();
+//   const dispatch = useDispatch();
+//   const { data, error, isLoading } = useGetUserQuery();
 
-  useEffect(() => {
-  if (data?.user) {
-    dispatch(userLoggedIn({ user: data.user }));
-  } else if (error) {
-    dispatch(userLoggedOut()); 
-  }
-}, [data, error, dispatch]);
+//   useEffect(() => {
+//   if (data?.user) {
+//     dispatch(userLoggedIn({ user: data.user }));
+//   } else if (error) {
+//     dispatch(userLoggedOut()); 
+//   }
+// }, [data, error, dispatch]);
 
 
 

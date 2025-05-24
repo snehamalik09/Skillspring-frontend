@@ -6,6 +6,9 @@ const initialState = {
     isAuthenticated: false // Boolean flag to check if user is authenticated
 };
 
+
+
+
 // Creating an authentication slice using createSlice
 const authSlice = createSlice({
     name: "authSlice", // Unique name for the slice
