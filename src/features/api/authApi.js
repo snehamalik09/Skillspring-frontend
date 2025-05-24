@@ -60,8 +60,17 @@ export const authApi = createApi({
             method: 'GET',
         }),
 
+        sendEmail: builder.mutation({
+            query: (data) => ({
+                url: '/contact',
+                method: 'POST',
+                body: data,
+                headers: { 'Content-Type': 'application/json' }
+            }),
+        }),
+
     })
 })
 
-export const { useLoginUserMutation ,useGetUserQuery ,useGetEnrolledCoursesQuery, useGetPublishedCoursesQuery, useRegisterUserMutation, useProfileQuery, useUpdateUserMutation } = authApi;
+export const { useLoginUserMutation ,useGetUserQuery ,useGetEnrolledCoursesQuery, useGetPublishedCoursesQuery, useRegisterUserMutation, useProfileQuery, useUpdateUserMutation, useSendEmailMutation } = authApi;
 
