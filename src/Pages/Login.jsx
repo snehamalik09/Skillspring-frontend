@@ -115,21 +115,21 @@ function Login() {
           <div className='min-h-screen w-screen'>
             <Navbar />
 
-            <div className='flex'>
+            <div className='flex flex-col md:flex-row'>
 
-              <div className='w-[50%] h-screen bg-[#192A88] absolute top-0 left-0 '>
-                <div className='flex flex-col justify-center items-center font-bold text-white mt-[40%]'>
+              <div className='w-full md:w-[50%] md:h-screen bg-[#192A88] hidden lg:block lg:absolute top-0 left-0 text-center '>
+                <div className='flex flex-col justify-center items-center font-bold text-white px-10 py-20 md:p-0 md:mt-[40%]'>
                   <h1 className='text-2xl'>Welcome Back!</h1>
                   <h3 className=''>Unlock your learning potential! Sign in to continue your journey!</h3>
                 </div>
               </div>
 
-              <div className='w-[50%] ml-[50%] flex  flex-col items-center justify-center'>
+              <div className='w-full lg:w-[50%] lg:ml-[50%] mt-[20%] lg:mt-0 flex  flex-col items-center justify-center'>
 
-                <h1 className='font-bold text-2xl text-[#192A88] mt-[2%]'> {activeTab ? "SIGN IN" : "SIGN UP"} </h1>
+                <h1 className='font-bold text-2xl text-[#192A88] my-[2%]'> {activeTab ? "SIGN IN" : "SIGN UP"} </h1>
 
                 {activeTab === true ?
-                  <form onSubmit={handleSubmit} className="flex flex-col w-[70%] mt-[2%] px-[6%] py-[7%] font-semibold shadow-2xl shadow-gray-500">
+                  <form onSubmit={handleSubmit} className="flex flex-col w-[85%] lg:w-[70%] mt-[2%] px-[6%] py-[7%] font-semibold shadow-2xl shadow-gray-500">
                     <input type="email" name="email" value={signinInput.email} placeholder="Email" onChange={handleChange} className="p-2 border-2 border-black rounded-lg m-2" />
 
                     <input type="password" name="password" placeholder="Password" value={signinInput.password} onChange={handleChange} className="p-2 border-2 border-black rounded-lg m-2" />
@@ -139,7 +139,7 @@ function Login() {
 
                   </form> :
 
-                  <form onSubmit={handleSubmit} className="flex flex-col w-[70%] mt-[2%] px-[6%] py-[7%] font-semibold shadow-2xl shadow-gray-500">
+                  <form onSubmit={handleSubmit} className="flex flex-col w-[85%] lg:w-[70%] mt-[2%] px-[6%] py-[7%] font-semibold shadow-2xl shadow-gray-500">
 
                     <input type="text" name="name" value={signupInput.name} placeholder="Name" onChange={handleChange} className="p-2 border-2 border-black rounded-lg m-2" />
 

@@ -5,8 +5,8 @@ import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 
 
-const Footer = ({handleScrollToContact }) => {
-    const navigate = useNavigate();
+const Footer = ({ handleScrollToContact }) => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();
   const userDetails = useSelector((state) => state.auth);
@@ -24,7 +24,7 @@ const Footer = ({handleScrollToContact }) => {
 
   const handleContactClick = () => {
     if (location.pathname === "/") {
-      handleScrollToContact?.(); 
+      handleScrollToContact?.();
     } else {
       navigate("/", { state: { scrollToContact: true } });
     }
@@ -33,17 +33,17 @@ const Footer = ({handleScrollToContact }) => {
 
   return (
     <footer className="w-full bg-white text-gray-800 border-t-2 border-gray-200 ">
-      <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
-        
+      <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-3 md:grid-cols-4 md:gap-10">
+
         <div>
-          <h2 className="text-2xl font-bold text-[#192A88] mb-4">SkillSpring</h2>
-          <p className="text-sm text-gray-600">
+          <h2 className="text-lg md:text-2xl font-bold text-[#192A88] mb-4">SkillSpring</h2>
+          <p className="text-sm text-gray-600 hidden md:block">
             Empowering learners with accessible knowledge and interactive learning.
           </p>
         </div>
 
         <div>
-          <h3 className="text-lg font-semibold mb-4">Explore</h3>
+          <h3 className="md:text-lg font-semibold mb-4">Explore</h3>
           <ul className="flex flex-col gap-3 text-sm">
             <li>
               <Link to="/" className="hover:text-[#192A88] transition">Home</Link>
@@ -57,13 +57,28 @@ const Footer = ({handleScrollToContact }) => {
           </ul>
         </div>
 
-        <div>
-          <h3 className="text-lg font-semibold mb-4">Contact</h3>
+        {/* <div className="flex flex-col justify-center">
+          <h3 className="md:text-lg font-semibold mb-4">Contact</h3>
           <p className="text-sm">📧 info@skillspring.com</p>
           <p className="text-sm">📞 +91-123-456-7890</p>
+        </div> */}
+
+        <div>
+          <h3 className="md:text-lg font-semibold mb-4">Contact</h3>
+
+          <div className="flex items-center text-sm">
+            <span>📧</span>
+            <span>info@skillspring.com</span>
+          </div>
+
+          <div className="flex items-center text-sm mt-2">
+            <span>📞</span>
+            <span>+91-123456789</span>
+          </div>
         </div>
 
-        <div className="flex items-start md:items-end justify-start md:justify-end text-sm text-gray-500">
+
+        <div className=" md:justify-end text-sm text-gray-500 hidden md:flex">
           <p className="md:text-right">© {new Date().getFullYear()} SkillSpring. All rights reserved.</p>
         </div>
 

@@ -113,7 +113,7 @@ function Courses() {
                     <div className="w-24 h-1 bg-[#192A88] mx-auto mt-4 rounded-full"></div>
                 </div>
 
-                <div className='w-[85%] mx-auto py-10 bg-white rounded-xl shadow-md mb-[10%]'>
+                <div className= 'w-[85%] mx-auto py-10 bg-white rounded-xl shadow-md mb-[10%]'>
                     {!isLoading ? (
                         <div className='grid grid-cols-1 md:grid-cols-2 gap-10 p-6'>
                             {courses?.data?.map((course) => (

@@ -25,23 +25,23 @@ const FeaturedCourses = () => {
     const scroll = (direction) => {
         const container = card.current;
         const scrollAmount = window.innerWidth * 0.33;
-        if (direction == 'left')
+        if (direction === 'left')
             container.scrollBy({ left: -scrollAmount, behaviour: 'smooth' });
-        if (direction == 'right')
+        if (direction === 'right')
             container.scrollBy({ left: scrollAmount, behaviour: 'smooth' });
     }
 
     const handleClick = (path) => {
-            if (isLoggedIn)
-                navigate(path);
-            else
-                navigate("/login");
-        }
+        if (isLoggedIn)
+            navigate(path);
+        else
+            navigate("/login");
+    }
 
     const CourseCard = ({ course }) => {
 
         return (
-            <div className='flex flex-col min-w-[28%] max-w-[28%] rounded-xl shadow-2xl shadow-gray-400 cursor-pointer' onClick={() => { handleClick(`/courses/course-details/${course._id}`) }} >
+            <div className='flex flex-col min-w-[350px] max-w-[28%] rounded-xl shadow-2xl shadow-gray-400 cursor-pointer' onClick={() => { handleClick(`/courses/course-details/${course._id}`) }} >
 
                 <img src={course.courseThumbnail} className='object-cover h-[50%] w-full border-b-2 border-black' />
 
@@ -76,12 +76,15 @@ const FeaturedCourses = () => {
 
 
     return (
-        <section className="relative w-full h-full py-16 bg-gray-50 mt-[10%]">
-            <h2 className="text-2xl md:text-4xl font-extrabold mb-10 text-center bg-gradient-to-r from-black to-gray-400 text-transparent bg-clip-text animate-pulse" style={{ animationDuration: '4s' }}>
-                🎓 Curated Courses Just for You
-            </h2>
+        <section className="relative w-full lg:h-full py-16 bg-gray-50 my-[5%]">
+            <div className='text-center'>
+                <h2 className="text-xl md:text-4xl font-extrabold bg-gradient-to-r from-black to-gray-600 text-transparent bg-clip-text animate-pulse py-2 border-b-2 border-blue-800 inline-block " style={{ animationDuration: '4s' }}>
+                    🎓 Curated Courses Just for You
+                </h2>
+            </div>
 
-            <div ref={card} className=' h-full overflow-x-auto scroll-smooth scrollbar-hide px-20 py-10 bg-white flex gap-[3%]  rounded-2xl'>
+
+            <div ref={card} className=' lg:h-full overflow-x-auto scroll-smooth scrollbar-hide px-10 md:px-20 py-10 my-[5%] bg-white flex gap-[3%]  rounded-2xl'>
                 <button className='absolute top-1/2 left-5 scale-150 cursor-pointer p-2' onClick={() => scroll('left')}> <FaArrowAltCircleLeft /> </button>
 
                 <button className='absolute top-1/2 right-10 scale-150 cursor-pointer p-2' onClick={() => scroll('right')}> <FaArrowAltCircleRight /> </button>

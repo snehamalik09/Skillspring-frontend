@@ -21,14 +21,14 @@ const CourseCard = ({ course, user }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: false, amount: 0.5 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="flex flex-col md:flex-row max-w-6xl w-full mx-auto bg-white rounded-xl shadow-md overflow-hidden mb-8 border border-gray-200 hover:shadow-lg transition-shadow duration-300"
+      className="flex flex-col  w-[300px] h-[300px] md:flex-row max-w-6xl w-full mx-auto bg-white rounded-xl shadow-md overflow-hidden mb-8 border border-gray-200 hover:shadow-lg transition-shadow duration-300"
       onClick={() => navigate(`/courses/course-details/${course._id}`)}
     >
       <div className="md:w-1/3 w-full md:h-auto bg-gray-50 top-0">
         <img
           src={course?.courseThumbnail || defaultThumbnail}
           alt="Course Thumbnail"
-          className="w-full h-full object-contain"
+          className="md:w-full md:h-full object-contain"
         />
       </div>
 
