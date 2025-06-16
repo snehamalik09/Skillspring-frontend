@@ -9,6 +9,8 @@ import { useNavigate } from 'react-router-dom';
 // import CoursesPageTopImage from '../assets/CoursesPageTopImage.png'
 import Footer from '../components/Footer.jsx'
 import coursesPageTopImage from '../assets/coursesPageTopImage.png'
+import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
+
 
 function Courses() {
     const skeletons = Array(3).fill(null);
@@ -17,9 +19,15 @@ function Courses() {
     const { data: courses, error, isLoading } = useGetPublishedCoursesQuery();
     const [searchQuery, setSearchQuery] = useState("");
 
+    const [currentPage, setCurrentPage] = useState(1);
+    const coursePerPage = 6;
+    const totalPages = Math.ceil(courses?.data?.length / coursePerPage);
+    const lastIndex = currentPage * coursePerPage;
+    const paginatedCourses = courses?.data?.slice(lastIndex - coursePerPage, lastIndex);
+
     useEffect(() => {
-        console.log("my coursesss : ", courses);
-    }, [courses]);
+        console.log("my paginatedCourses : ", paginatedCourses);
+    }, [paginatedCourses]);
 
     const handleSearchSubmit = (e) => {
         e.preventDefault();
@@ -113,10 +121,10 @@ function Courses() {
                     <div className="w-24 h-1 bg-[#192A88] mx-auto mt-4 rounded-full"></div>
                 </div>
 
-                <div className= 'w-[85%] mx-auto py-10 bg-white rounded-xl shadow-md mb-[10%]'>
+                <div className='w-[85%] mx-auto py-10 bg-white rounded-xl shadow-md mb-[10%]'>
                     {!isLoading ? (
                         <div className='grid grid-cols-1 md:grid-cols-2 gap-10 p-6'>
-                            {courses?.data?.map((course) => (
+                            {paginatedCourses?.map((course) => (
                                 <CourseCard key={course._id} course={course} user={userDetails?.user} />
                             ))}
                         </div>
@@ -127,14 +135,41 @@ function Courses() {
                             ))}
                         </div>
                     )}
+
+                    {/* <div className='flex justify-center items-center gap-5  text-xl p-2'>
+                        <button disabled={currentPage === 1} className={` transition-colors duration-300 ${currentPage === 1 ? 'cursor-not-allowed text-gray-400' : 'text-black hover:text-gray-700 cursor-pointer'}`} onClick={() => setCurrentPage((prev) => prev - 1)}>
+                            <FaArrowAltCircleLeft />
+                        </button>
+                        <span className="text-lg font-semibold text-gray-700">{currentPage}</span>
+                        <button disabled={currentPage === totalPages} className={`transition-colors duration-300 ${currentPage === totalPages ? 'cursor-not-allowed text-gray-400' : 'text-black hover:text-gray-700 cursor-pointer'}`} onClick={() => setCurrentPage((prev) => prev + 1)}>
+                            <FaArrowAltCircleRight />
+                        </button>
+                    </div> */}
+
+                    {totalPages && totalPages>0 && 
+                    <div className="flex justify-center items-center gap-2 mt-4">
+                        {[...Array(totalPages)].map((_, index) => (
+                            <button
+                                key={index}
+                                onClick={() => setCurrentPage(index + 1)}
+                                className={`px-4 py-2 rounded-lg border font-medium transition-all duration-200 cursor-pointer ${currentPage === index + 1
+                                        ? 'bg-indigo-600 text-white shadow-md scale-105'
+                                        : 'bg-white text-gray-700 border-gray-300 hover:bg-indigo-50 hover:border-indigo-400'} `}
+                            >
+                                {index + 1}
+                            </button>
+                        ))}
+
+                    </div>
+                    }
+                    
+
                 </div>
-
-
 
 
             </div>
 
-            <Footer/>
+            <Footer />
         </>
     )
 }

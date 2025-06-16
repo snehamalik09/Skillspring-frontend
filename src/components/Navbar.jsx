@@ -79,7 +79,7 @@ useEffect(() => {
         <div className="text-xl font-bold">SkillSpring</div>
         <div>
           <CiMenuBurger className="menuToggle md:hidden text-xl" onClick={toggleNavbar} aria-label="Toggle navigation menu" />
-          <div className={` mobileNav absolute top-0 left-0 w-full h-[50%] justify-center items-center bg-[#ecf0fedc] z-[100] ${openNavbar ? 'flex' : 'hidden'} `}>
+          <div className={` mobileNav absolute top-0 left-0 w-full h-[50%] justify-center items-center bg-[#ecf0fedc] backdrop-blur-sm z-[100] ${openNavbar ? 'flex' : 'hidden'} `}>
             <ul className="font-semibold flex flex-col gap-10 text-xl">
               <li className="transition duration-200 hover:text-[#192A88] hover:scale-105 active:scale-95" onClick={() => handleClick("/")}>Home</li>
               <li className="transition duration-200 hover:text-[#192A88] hover:scale-105 active:scale-95" onClick={() => handleClick("/dashboard")}>Dashboard</li>

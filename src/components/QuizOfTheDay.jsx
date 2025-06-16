@@ -133,8 +133,11 @@ function QuizOfTheDay() {
   if (quizzes.length === 0) return null;
 
   return (
-    <div className="w-full lg:h-full p-10 mb-[10%] lg:mb-0">
-      <section className="w-full h-[50%] md:h-auto lg:mt-16 px-6 md:px-12 py-10 rounded-2xl max-w-4xl mx-auto shadow-xl bg-gradient-to-br from-[#F8F9FC] to-[#E0E7FF] relative overflow-hidden">
+    // <div className="w-full lg:h-full p-10 mb-[10%] lg:mb-0">
+      <div className="w-full lg:h-full mb-20 px-4 py-6 sm:px-6 md:px-10 lg:py-10 lg:mb-0">
+      <section className="w-full md:h-auto lg:mt-16 px-6 md:px-12 py-10 md:rounded-2xl max-w-4xl mx-auto shadow-xl bg-gradient-to-br from-[#F8F9FC] to-[#E0E7FF] relative overflow-hidden">
+      {/* <section className="w-full px-4 sm:px-6 py-8 sm:py-10 rounded-xl max-w-xl mx-auto shadow-md bg-gradient-to-br from-[#F8F9FC] to-[#E0E7FF] relative"> */}
+
         <h2 className="text-2xl md:text-4xl font-extrabold mb-8 text-[#192A88] text-center">
           🧠 Quiz of the Day
         </h2>

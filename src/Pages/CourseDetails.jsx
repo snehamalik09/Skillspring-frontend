@@ -48,36 +48,73 @@ const CourseDetails = () => {
                 : <>
 
 
-                    <div className='flex justify-between items-center bg-gray-800 px-[10%] py-[3%]  w-[100%] cursor-pointer'>
+                    <div className='flex justify-between gap-2 items-center bg-gray-800 px-8 py-10 md:px-[10%] md:py-[3%]  w-[100%] cursor-pointer'>
                         <FaArrowLeft className='absolute top-5 left-5 text-white cursor-pointer' onClick={() => { navigate(-1) }} />
                         <div className=' text-white flex flex-col'>
-                            <h1 className='font-bold text-3xl'>{course?.course?.courseTitle}</h1>
-                            <p>{course?.course?.category.toUpperCase()}</p>
+                            <h1 className='font-bold text-md lg:text-3xl'>{course?.course?.courseTitle}</h1>
+                            <p className='text-sm'>{course?.course?.category.toUpperCase()}</p>
                             {course?.course?.courseLevel ? (
-                                <p>{course.course.courseLevel.toUpperCase()}</p>
+                                <p className='text-sm'>{course.course.courseLevel.toUpperCase()}</p>
                             ) : null}
                             <p>Total lectures - <span className='italic text-sm'>{course?.course?.lectures?.length}</span> </p>
                         </div>
 
-                        <div className='w-70 h-50'>
+                        <div className='w-[40%] h-[40%] md:w-70 md:h-50'>
                             <img src={course?.course.courseThumbnail} className='object-cover w-full h-full ' />
                         </div>
 
                     </div>
 
-                    <div className='w-[80%] my-[5%] mx-auto flex justify-between text-black mb-[7%]'>
-                        <div className='w-[60%] flex flex-col gap-6'>
-                            <h1 className='font-bold text-2xl'>DESCRIPTION</h1>
-                            <div dangerouslySetInnerHTML={{ __html: course?.course?.description }} />
+                    <div className='w-[85%] lg:w-[80%] my-[5%] mx-auto flex flex-col md:flex-row gap-10 md:gap-0 justify-between text-black mb-[7%]'>
+
+                        {/* same react player for mobile view */}
+                        <div className="w-full md:hidden flex flex-col shadow-lg rounded-xl gap-3 p-4 bg-white max-h-fit">
+                            <div className="w-full aspect-video overflow-hidden rounded-md">
+                                <ReactPlayer
+                                    width="100%"
+                                    height="100%"
+                                    controls={true}
+                                    playing={true}
+                                    url={lectures?.lectures[0]?.videoUrl}
+                                />
+                            </div>
+
+                            <h2 className="font-semibold text-lg text-gray-800 line-clamp-2">
+                                {course?.course?.courseTitle}
+                            </h2>
+
+                            <hr className="border-gray-300" />
+
+                            {!purchased && (
+                                <p className="font-bold text-gray-700 text-sm">
+                                    ₹ <span className="italic font-normal">{course?.course?.coursePrice}/-</span>
+                                </p>
+                            )}
+
+                            {purchased ? (
+                                <button
+                                    className="bg-[#192A88] text-white py-2 rounded-lg hover:scale-[1.02] active:scale-95 transition-transform"
+                                    onClick={() => navigate(`/course-progress/${courseId}`)}
+                                >
+                                    Continue
+                                </button>
+                            ) : (
+                                <PaymentButton courseId={courseId} course={course?.course} />
+                            )}
+                        </div>
+
+                        <div className=' w-full md:w-[50%] lg:w-[60%] flex flex-col gap-6'>
+                            <h1 className='font-bold text-lg md:text-2xl'>DESCRIPTION</h1>
+                            <div className='text-sm md:text-lg' dangerouslySetInnerHTML={{ __html: course?.course?.description }} />
 
 
 
-                            <div className='flex flex-col shadow-2xl shadow-gray-700 rounded-2xl p-10 text-lg'>
-                                <h1 className='font-bold text-xl'>Course Content</h1>
+                            <div className='flex flex-col shadow-2xl shadow-gray-700 rounded-2xl p-5 lg:p-10 text-lg'>
+                                <h1 className='font-bold text-lg md:text-xl'>Course Content</h1>
                                 <p className='text-gray-500 text-sm italic'> {lectures?.lectures?.length} lectures </p>
                                 <ul className='space-y-1.5 my-[4%]'>
                                     {lectures?.lectures.map((lecture) => (
-                                        <div className='flex items-center text-lg gap-4 cursor-pointer' key={lecture._id} >
+                                        <div className='flex items-center text-sm md:text-lg gap-4 cursor-pointer' key={lecture._id} >
                                             <CgPlayButtonO />
                                             <li>{lecture.lectureTitle}</li>
                                         </div>
@@ -111,7 +148,7 @@ const CourseDetails = () => {
 
                         </div> */}
 
-                        <div className="w-full md:w-[30%] flex flex-col shadow-lg rounded-xl gap-5 p-4 bg-white max-h-fit">
+                        <div className="w-full hidden md:flex md:w-[45%] lg:w-[30%] flex flex-col shadow-lg rounded-xl gap-5 p-4 bg-white max-h-fit">
                             <div className="w-full aspect-video overflow-hidden rounded-md">
                                 <ReactPlayer
                                     width="100%"

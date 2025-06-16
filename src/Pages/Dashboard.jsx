@@ -7,20 +7,30 @@ import { toast } from 'react-toastify';
 import { FaArrowLeft } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
+import { CgProfile } from "react-icons/cg";
+
 
 
 function Dashboard() {
     const navigate = useNavigate();
     const { data, isLoading, refetch } = useProfileQuery();
-    const {data:enrolledCourses, isLoading:courseLoading } = useGetEnrolledCoursesQuery();
+    const { data: enrolledCourses, isLoading: courseLoading } = useGetEnrolledCoursesQuery();
     const [user, setUser] = useState(null);
     const [name, setName] = useState("");
     const [profilePhoto, setProfilePhoto] = useState("");
+    const [sideBarOpen, setSideBarOpen] = useState(false);
     const [updateData, { data: updateUserData, isLoading: updateUserLoading, isError, error, isSuccess }] = useUpdateUserMutation();
 
+    //pagination
+    const [currentPage, setCurrentPage] = useState(1);
+    const coursePerPage = 6;
+    const totalPages = Math.ceil(enrolledCourses?.data?.length / coursePerPage);
+    const lastIndex = currentPage * coursePerPage;
+    const paginatedCourses = enrolledCourses?.data?.slice(lastIndex - coursePerPage, lastIndex);
+
     useEffect(() => {
-        console.log("my enrolled courses : ", enrolledCourses?.data);
-    }, [enrolledCourses]);
+        console.log("my enrolled courses : ", paginatedCourses?.data);
+    }, [paginatedCourses]);
 
     useEffect(() => {
         if (data?.user) {
@@ -57,6 +67,10 @@ function Dashboard() {
         toast.success("User details updated successfully")
     }
 
+    function handleToggle() {
+        setSideBarOpen((prev) => !prev);
+    }
+
     return (
         <>
             <Navbar />
@@ -64,8 +78,13 @@ function Dashboard() {
             <div className="min-h-screen flex bg-gray-50">
 
 
-                <aside className="w-full top-0 sticky h-screen md:w-1/3 lg:w-1/4 bg-white p-6 shadow-2xl">
-                    <FaArrowLeft className='cursor-pointer' onClick={() => { navigate(-1) }} />
+                {/* <aside className={`w-full top-0 sticky hidden md:block h-screen md:w-1/3 lg:w-1/4 bg-white p-6 shadow-2xl ${sideBarOpen? 'block' : 'hidden'}`}> */}
+                <aside className={`
+                    fixed md:sticky top-0 left-0 z-50 h-full bg-white shadow-xl transform transition-transform duration-300 ease-in-out
+                    w-3/4 p-4 md:static md:h-screen md:w-1/3 lg:w-1/4 md:p-6
+                    ${sideBarOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}>
+
+                    <FaArrowLeft className='cursor-pointer' onClick={handleToggle} />
                     <div className="flex flex-col items-center text-center">
                         <img
                             src={user?.profilePhoto || emptyProfilePicture}
@@ -85,15 +104,50 @@ function Dashboard() {
                     </div>
                 </aside>
 
-                <main className="flex-1 p-6">
-                    <h1 className="text-2xl font-semibold text-gray-800 mb-4">Your Enrolled Courses</h1>
-                    <div className='w-[70%] my-[5%]'>
-                    {
-                        enrolledCourses?.data?.map((course) => (
-                            <CourseCard key={course._id} course={course} user={data.user} />
-                        ))
-                    }
+                {!sideBarOpen
+                    &&
+                    <CgProfile
+                        className="md:hidden absolute top-[13%] left-5 z-50 text-2xl text-gray-800 cursor-pointer"
+                        onClick={handleToggle}
+                    />
+                }
+
+                {sideBarOpen &&
+                    <div className='z-40 inset-0 bg-white/30 backdrop-blur-sm fixed md:hidden' onClick={() => setSideBarOpen(false)}>
+                    </div>}
+
+
+
+                {/* <CgProfile className='md:hidden absolute left-5 top-[13%] text-xl' onClick={handleToggle} /> */}
+
+                <main className="flex-1 p-6 z-30">
+                    <h1 className="text-2xl font-semibold text-gray-800 mb-4 text-center md:my-0 my-[10%] border-b-2 border-gray-300">Your Enrolled Courses</h1>
+                    
+                    
+                    <div className='w-full md:w-[70%] my-[10%] md:my-[5%]'>
+                        {
+                            paginatedCourses?.map((course) => (
+                                <CourseCard key={course._id} course={course} user={data.user} />
+                            ))
+                        }
                     </div>
+
+                    {totalPages && totalPages>0 && 
+                    <div className="flex justify-center items-center gap-2 mt-4">
+                        {[...Array(totalPages)].map((_, index) => (
+                            <button
+                                key={index}
+                                onClick={() => setCurrentPage(index + 1)}
+                                className={`px-4 py-2 rounded-lg border font-medium transition-all duration-200 cursor-pointer ${currentPage === index + 1
+                                        ? 'bg-indigo-600 text-white shadow-md scale-105'
+                                        : 'bg-white text-gray-700 border-gray-300 hover:bg-indigo-50 hover:border-indigo-400'} `}
+                            >
+                                {index + 1}
+                            </button>
+                        ))}
+
+                    </div>
+                    }
 
                     {/* {enrolledCourses?.data?.length === 0 ? (
                         <p className="text-gray-600">You are not enrolled in any courses yet.</p>

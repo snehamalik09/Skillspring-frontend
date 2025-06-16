@@ -22,6 +22,12 @@ const SearchPage = () => {
 
     const { data, isLoading } = useGetSearchCoursesQuery({ searchQuery: query, categories: selectedCategories, sortByPrice });
 
+    const [currentPage, setCurrentPage] = useState(1);
+    const coursePerPage = 6;
+    const totalPages = Math.ceil(data?.courses?.length / coursePerPage);
+    const lastIndex = currentPage * coursePerPage;
+    const paginatedCourses = data?.courses?.slice(lastIndex - coursePerPage, lastIndex);
+
     const isEmpty = !isLoading && data?.courses?.length === 0;
 
     const handleFilterChange = (categories, price) => {
@@ -65,7 +71,7 @@ const SearchPage = () => {
                         <Navbar />
 
                         <div className="px-[5%] py-6">
-                            <h1 className="font-bold text-2xl text-gray-800 mb-2"> {data?.courses?.length} results {query? `for "${query}"` : ""} </h1>
+                            <h1 className="font-bold text-2xl text-gray-800 mb-2"> {data?.courses?.length} results {query ? `for "${query}"` : ""} </h1>
                             <p className="text-gray-600">
                                 Showing results <span className="italic text-blue-500"> {query ? `for "${query}"` : '...'} </span>
                             </p>
@@ -84,15 +90,32 @@ const SearchPage = () => {
                                 ) : isEmpty ? (
                                     <p className="text-center text-gray-500 text-lg">Your search didn't return any results. Explore other topics!</p>
                                 ) :
-                                    data?.courses?.map((course, index) => (
+                                    paginatedCourses.map((course, index) => (
                                         <CourseCard key={index} course={course} user={userDetails?.user} />
                                     ))
 
                                 }
                             </div>
+
+                            {totalPages && totalPages > 0 &&
+                                <div className="flex justify-center items-center gap-2 mt-4">
+                                    {[...Array(totalPages)].map((_, index) => (
+                                        <button
+                                            key={index}
+                                            onClick={() => setCurrentPage(index + 1)}
+                                            className={`px-4 py-2 rounded-lg border font-medium transition-all duration-200 cursor-pointer ${currentPage === index + 1
+                                                ? 'bg-indigo-600 text-white shadow-md scale-105'
+                                                : 'bg-white text-gray-700 border-gray-300 hover:bg-indigo-50 hover:border-indigo-400'} `}
+                                        >
+                                            {index + 1}
+                                        </button>
+                                    ))}
+
+                                </div>
+                            }
                         </div>
 
-                        <Footer/>
+                        <Footer />
                     </>
                 )}
         </div>
