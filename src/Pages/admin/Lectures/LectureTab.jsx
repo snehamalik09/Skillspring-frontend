@@ -137,13 +137,13 @@ const LectureTab = () => {
                     </div>
                 </div>
 
-                <button type="button" onClick={removeLectureFromCourse} className='w-[15%] px-4 py-1 bg-red-400 text-white rounded-xl cursor-pointer duration-500'> Remove Lecture </button>
+                <button type="button" onClick={removeLectureFromCourse} className='w-[50%] lg:w-[15%] px-4 py-1 bg-red-400 text-white rounded-xl cursor-pointer duration-500'> Remove Lecture </button>
 
                 <label htmlFor="lectureTitle" className='font-bold'>Title</label>
-                <input type="text" value={title} onChange={handleChange} name="lectureTitle" className='w-[30%] p-2 rounded-xl border-2 border-[#b6b9bc]  outline-none' />
+                <input type="text" value={title} onChange={handleChange} name="lectureTitle" className='w-full lg:w-[15%] p-2 rounded-xl border-2 border-[#b6b9bc]  outline-none' />
 
                 <label htmlFor="video" className='font-bold'>Video*</label>
-                <input type="file" onChange={fileChangeHandler} name="video" accept="video/*" className='w-[30%] p-2 rounded-xl border-2 border-[#b6b9bc]  outline-none' />
+                <input type="file" onChange={fileChangeHandler} name="video" accept="video/*" className='w-[50%] lg:w-[15%] p-2 rounded-xl border-2 border-[#b6b9bc]  outline-none' />
 
                 <div className='flex gap-5'>
                     <div
@@ -170,7 +170,7 @@ const LectureTab = () => {
                     </div>
                 )}
 
-                <button type="submit" disabled={btnDisable.toString()} className='w-[15%] px-4 py-1 mr-10 mt-10 bg-black text-white rounded-xl cursor-pointer hover:bg-white hover:text-black duration-500' > Update Lecture </button>
+                <button type="submit" disabled={btnDisable.toString()} className='w-[50%] lg:w-[15%] px-4 py-1 mr-10 mt-10 bg-black text-white rounded-xl cursor-pointer hover:bg-white hover:text-black duration-500' > Update Lecture </button>
 
             </form>
         </div>

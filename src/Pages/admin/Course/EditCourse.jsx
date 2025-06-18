@@ -158,25 +158,25 @@ const EditCourse = () => {
     }
 
     return( 
-        <div className='px-16 mt-10'>
+        <div className='px-5 md:px-16 mt-10'>
 
             <div className=' flex justify-between'> 
-                <h1 className='font-bold text-xl'>Add details about the course</h1>
-                <button className='px-4 py-1 mr-10 bg-black text-white rounded-xl cursor-pointer border-2 border-white hover:bg-white hover:text-black hover:border-black duration-500' onClick={ () => navigate(`/admin/course/${courseId}/lecture`)}> Add lectures </button> 
+                <h1 className='font-bold text-sm md:text-xl'>Add details about the course</h1>
+                <button className='md:px-4 px-3 md:py-1 md:mr-10 bg-black text-white rounded-xl cursor-pointer border-0 md:border-2 border-white hover:bg-white hover:text-black hover:border-black duration-500' onClick={ () => navigate(`/admin/course/${courseId}/lecture`)}> Add lectures </button> 
             </div>
 
 
-            <form className='flex flex-col mt-14 gap-5 border-2 border-[#b6b9bc] rounded-2xl py-4 px-8' onSubmit={handleSubmit}>
+            <form className='flex flex-col mt-14 gap-5 border-2 border-[#b6b9bc] rounded-2xl py-4 px-4 md:px-8 mb-10 md:mb-0' onSubmit={handleSubmit}>
 
-                <div className='flex justify-between items-center'>
+                <div className='flex flex-col md:flex-row justify-between gap-5 items-center'>
                     <div className='flex flex-col'>
-                        <h1 className='font-bold text-xl'>Basic Information</h1>
-                        <h2 className='font-normal text-[#b6b9bc]'>Make changes to your courses here. Click save when you're done.</h2>
+                        <h1 className='font-bold  text-lg md:text-xl'>Basic Information</h1>
+                        <h2 className='font-normal text-sm md:text-lg text-[#b6b9bc]'>Make changes to your courses here. Click save when you're done.</h2>
                     </div>
 
                     <div className='flex items-center'>
-                        <button type="button" disabled={data.course.lectures.length===0} className='px-4 py-1 mr-10 bg-black text-white rounded-xl cursor-pointer hover:bg-white hover:text-black duration-500' onClick={handlePublish}> {input.isPublished ? "Unpublish" : "Publish"} </button> 
-                        <button type="button" className='px-4 py-1 bg-white text-black rounded-xl cursor-pointer hover:bg-black hover:text-white duration-500' onClick={deleteCourse}> Remove Course </button> 
+                        <button type="button" disabled={data.course.lectures.length===0} className='px-3 md:px-4 py-1 mr-10 bg-black text-white rounded-xl cursor-pointer hover:bg-white hover:text-black duration-500' onClick={handlePublish}> {input.isPublished ? "Unpublish" : "Publish"} </button> 
+                        <button type="button" className='md:px-4 px-3 py-1 bg-white text-black rounded-xl cursor-pointer hover:bg-black hover:text-white duration-500' onClick={deleteCourse}> Remove Course </button> 
                     </div>
                 </div>
 

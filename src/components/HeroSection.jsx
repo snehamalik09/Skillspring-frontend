@@ -3,12 +3,22 @@ import heroImage from '../assets/hero.avif';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import studentImage from '../assets/student.jpg'
+import { useSelector } from "react-redux";
 
 
 
 function HeroSection({ onBookCallClick }) {
 
     const navigate = useNavigate();
+    const userDetails = useSelector((state) => state.auth);
+    const isLoggedIn = userDetails.isAuthenticated;
+
+    const handleClick = (path) => {
+        if (isLoggedIn)
+            navigate(path);
+        else
+            navigate("/login");
+    }
 
     return (
         <>
@@ -34,7 +44,7 @@ function HeroSection({ onBookCallClick }) {
 
                         <div className='flex mt-5 justify-around md:justify-start md:gap-5 lg:gap-10 md:font-bold lg:text-lg'>
                                  <button className='bg-[#192A88] text-white px-2 py-2 lg:px-6 lg:py-4 cursor-pointer transition-transform duration-200 hover:scale-[1.02] active:scale-95' onClick={onBookCallClick}>Book a Call</button>
-                                 <button className='border-2 border-[#192A88] text-[#192A88] px-2 py-2 lg:px-6 lg:py-4 cursor-pointer transition-transform duration-200 hover:scale-[1.02] active:scale-95' onClick={() => navigate(`/courses/search?query`)}>Pick a Course</button>
+                                 <button className='border-2 border-[#192A88] text-[#192A88] px-2 py-2 lg:px-6 lg:py-4 cursor-pointer transition-transform duration-200 hover:scale-[1.02] active:scale-95' onClickCapture={()=>handleClick(`/courses/search?query`)} >Pick a Course</button>
                              </div>
 
                         <div className='md:hidden mt-6 w-full flex justify-center'>

@@ -41,13 +41,13 @@ const FeaturedCourses = () => {
     const CourseCard = ({ course }) => {
 
         return (
-            <div className='flex flex-col min-w-[350px] max-w-[28%] rounded-xl shadow-2xl shadow-gray-400 cursor-pointer' onClick={() => { handleClick(`/courses/course-details/${course._id}`) }} >
+            <div className='flex flex-col min-w-[250px] md:min-w-[350px] max-w-[28%] rounded-xl shadow-2xl shadow-gray-400 cursor-pointer' onClick={() => { handleClick(`/courses/course-details/${course._id}`) }} >
 
-                <img src={course.courseThumbnail} className='object-cover h-[50%] w-full border-b-2 border-black' />
+                <img src={course.courseThumbnail} className='object-cover md:h-48 h-36 w-full border-b-2 border-black' />
 
-                <div className='p-6 '>
+                <div className='p-6'>
                     <h1 className='font-bold mb-2'>{course.courseTitle}</h1>
-                    <div className='mb-6' dangerouslySetInnerHTML={{ __html: truncateText(course?.description, 20) }} />
+                    <div className='mb-6 hidden md:block' dangerouslySetInnerHTML={{ __html: truncateText(course?.description, 20) }} />
                     <p> <strong>Level :  </strong> {course.courseLevel || 'Beginner'} ⭐</p>
 
                 </div>
@@ -85,9 +85,9 @@ const FeaturedCourses = () => {
 
 
             <div ref={card} className=' lg:h-full overflow-x-auto scroll-smooth scrollbar-hide px-10 md:px-20 py-10 my-[5%] bg-white flex gap-[3%]  rounded-2xl'>
-                <button className='absolute top-1/2 left-5 scale-150 cursor-pointer p-2' onClick={() => scroll('left')}> <FaArrowAltCircleLeft /> </button>
+                <button className='absolute top-1/2 md:top-2/3 left-5 scale-150 cursor-pointer p-2' onClick={() => scroll('left')}> <FaArrowAltCircleLeft /> </button>
 
-                <button className='absolute top-1/2 right-10 scale-150 cursor-pointer p-2' onClick={() => scroll('right')}> <FaArrowAltCircleRight /> </button>
+                <button className='absolute top-1/2 md:top-2/3 right-10 scale-150 cursor-pointer p-2' onClick={() => scroll('right')}> <FaArrowAltCircleRight /> </button>
 
                 {
                     featured?.map((course) => (

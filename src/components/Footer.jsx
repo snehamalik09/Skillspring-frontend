@@ -33,17 +33,17 @@ const Footer = ({ handleScrollToContact }) => {
 
   return (
     <footer className="w-full bg-white text-gray-800 border-t-2 border-gray-200 ">
-      <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-3 md:grid-cols-4 md:gap-10">
+      <div className="max-w-7xl mx-auto py-10 px-5 md:px-6 md:py-12 grid grid-cols-4 md:gap-10">
 
         <div>
-          <h2 className="text-lg md:text-2xl font-bold text-[#192A88] mb-4">SkillSpring</h2>
+          <h2 className="text-sm md:text-2xl font-bold text-[#192A88] mb-4">SkillSpring</h2>
           <p className="text-sm text-gray-600 hidden md:block">
             Empowering learners with accessible knowledge and interactive learning.
           </p>
         </div>
 
         <div>
-          <h3 className="md:text-lg font-semibold mb-4">Explore</h3>
+          <h3 className="md:text-lg text-sm font-semibold mb-4">Explore</h3>
           <ul className="flex flex-col gap-3 text-sm">
             <li>
               <Link to="/" className="hover:text-[#192A88] transition">Home</Link>
@@ -63,8 +63,8 @@ const Footer = ({ handleScrollToContact }) => {
           <p className="text-sm">📞 +91-123-456-7890</p>
         </div> */}
 
-        <div>
-          <h3 className="md:text-lg font-semibold mb-4">Contact</h3>
+        <div className="col-span-2 md:col-span-1">
+          <h3 className="md:text-lg text-sm font-semibold mb-4">Contact</h3>
 
           <div className="flex items-center text-sm">
             <span>📧</span>

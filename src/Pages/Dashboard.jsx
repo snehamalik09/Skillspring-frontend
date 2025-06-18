@@ -8,6 +8,7 @@ import { FaArrowLeft } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { CgProfile } from "react-icons/cg";
+import CourseSkeleton from '../components/CourseSkeleton.jsx';
 
 
 
@@ -122,31 +123,40 @@ function Dashboard() {
 
                 <main className="flex-1 p-6 z-30">
                     <h1 className="text-2xl font-semibold text-gray-800 mb-4 text-center md:my-0 my-[10%] border-b-2 border-gray-300">Your Enrolled Courses</h1>
-                    
-                    
+
+
                     <div className='w-full md:w-[70%] my-[10%] md:my-[5%]'>
+
                         {
-                            paginatedCourses?.map((course) => (
-                                <CourseCard key={course._id} course={course} user={data.user} />
-                            ))
+                            courseLoading ? (
+                                Array.from({ length: 3 }).map((_, idx) => (
+                                    <CourseSkeleton key={idx} />
+                                ))
+                            ) : (
+                                paginatedCourses?.map((course) => (
+                                    <CourseCard key={course._id} course={course} user={data.user} />
+                                ))
+                            )
                         }
+
+
                     </div>
 
-                    {totalPages && totalPages>0 && 
-                    <div className="flex justify-center items-center gap-2 mt-4">
-                        {[...Array(totalPages)].map((_, index) => (
-                            <button
-                                key={index}
-                                onClick={() => setCurrentPage(index + 1)}
-                                className={`px-4 py-2 rounded-lg border font-medium transition-all duration-200 cursor-pointer ${currentPage === index + 1
+                    {totalPages && totalPages > 0 &&
+                        <div className="flex justify-center items-center gap-2 mt-4">
+                            {[...Array(totalPages)].map((_, index) => (
+                                <button
+                                    key={index}
+                                    onClick={() => setCurrentPage(index + 1)}
+                                    className={`px-4 py-2 rounded-lg border font-medium transition-all duration-200 cursor-pointer ${currentPage === index + 1
                                         ? 'bg-indigo-600 text-white shadow-md scale-105'
                                         : 'bg-white text-gray-700 border-gray-300 hover:bg-indigo-50 hover:border-indigo-400'} `}
-                            >
-                                {index + 1}
-                            </button>
-                        ))}
+                                >
+                                    {index + 1}
+                                </button>
+                            ))}
 
-                    </div>
+                        </div>
                     }
 
                     {/* {enrolledCourses?.data?.length === 0 ? (

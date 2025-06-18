@@ -50,9 +50,9 @@ const CreateLecture = () => {
   
 
     return(
-        <div className='px-16 mt-10 overlfow-x-hidden '>
+        <div className='px-5 md:px-16 mt-10 overlfow-x-hidden '>
 
-            <h1 className='font-bold text-xl'>Let's add lectures, add some basic details for your new lecture</h1>
+            <h1 className='font-bold text-lg md:text-xl'>Let's add lectures, add some basic details for your new lecture</h1>
 
             <form className='flex flex-col mt-14 text-lg gap-5 ' onSubmit={handleSubmit}>
                 <label htmlFor="title" className='font-bold'>Title</label>
@@ -67,7 +67,7 @@ const CreateLecture = () => {
             <div className='my-10 w-[100%]'>
                 <ul>
                     {lectures?.lectures?.map((lecture, index)=>(      
-                    <div key={index} className='flex justify-between cursor-pointer bg-gray-200 p-5 my-5'>
+                    <div key={index} className='flex justify-between cursor-pointer bg-gray-200 p-3 md:p-5 my-5 text-xs md:text-sm'>
                         <li className= 'font-semibold'> <span className='font-bold'> Lecture {index} - </span> {lecture.lectureTitle} </li>
                         <FaEdit onClick={()=>{navigate(`/admin/course/${courseId}/lecture/${lecture._id}`)}}/>
                     </div>

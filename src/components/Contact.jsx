@@ -13,6 +13,7 @@ const Contact = ({ refProp }) => {
     })
     const [showSuccess, setShowSuccess] = useState(false);
     const [showError, setShowError] = useState(false);
+    const [tooManyRequests, setTooManyRequests] = useState(false);
 
     useEffect(() => {
         if (isSuccess) {
@@ -35,6 +36,16 @@ const Contact = ({ refProp }) => {
 
     }, [showError])
 
+    useEffect(() => {
+        if (tooManyRequests) {
+            const timer = setTimeout(() => {
+                setTooManyRequests(false);
+            }, 4000)
+            return () => clearTimeout(timer);
+        }
+
+    }, [tooManyRequests])
+
     const [sendEmail, { isLoading, isSuccess, isError, data, error }] = useSendEmailMutation();
 
     const handleChange = (e) => {
@@ -47,6 +58,7 @@ const Contact = ({ refProp }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
+            console.log("email : ", formData);
             const res = await sendEmail(formData).unwrap();
             console.log("email response : ", res);
             setFormData({
@@ -58,8 +70,11 @@ const Contact = ({ refProp }) => {
             setShowSuccess(true);
         }
         catch (err) {
-            setShowError(true);
-            console.error(err);
+            if(err.originalStatus==429)
+                setTooManyRequests(true);
+            else
+                setShowError(true);
+            console.log("error is : ", err);
         }
 
     }
@@ -204,7 +219,7 @@ const Contact = ({ refProp }) => {
                             transition={{ duration: 0.5 }}
                             viewport={{ once: false, amount: 0.8 }}
                             className='flex flex-col items-end'>
-                            <button type="submit" className='my-8 md:my-4 border-3 md:border-4 border-black p-4 lg:w-[30%] cursor-pointer transition-transform duration-200 hover:scale-[1.02] active:scale-95'>
+                            <button type="submit" className='my-8 md:my-4 border-2 md:border-4 border-black p-2 md:p-4 lg:w-[30%] cursor-pointer transition-transform duration-200 hover:scale-[1.02] active:scale-95'>
                                 Send Message
                             </button>
                             {isLoading ? (
@@ -226,6 +241,15 @@ const Contact = ({ refProp }) => {
                                     viewport={{ once: true }}
                                 >
                                     ❌ Error occurred. Try again!
+                                </motion.p>
+                            ) : tooManyRequests ? (
+                                <motion.p
+                                    initial={{ opacity: 0, scaleX: 0 }}
+                                    whileInView={{ scaleX: 1, opacity: 1 }}
+                                    transition={{ duration: 0.3 }}
+                                    viewport={{ once: true }}
+                                >
+                                    ❌ Slow down! You can message us again in an hour.
                                 </motion.p>
                             ) : null}
                         </motion.div>

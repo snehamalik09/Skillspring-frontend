@@ -39,7 +39,10 @@ useEffect(() => {
 
   const handleClick = (path) => {
     setOpenNavbar(false);
-    navigate(path);
+    if(!isLoggedIn)
+      navigate("/login");
+    else
+      navigate(path);
   }
 
   const handleLogout = async () => {

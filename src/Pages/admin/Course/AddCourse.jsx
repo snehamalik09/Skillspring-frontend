@@ -53,11 +53,11 @@ const AddCourse = () => {
     }
 
     return(
-        <div className='px-16 mt-10'>
+        <div className='px-10 md:px-16 mt-10'>
 
-            <h1 className='font-bold text-xl'>Let's add course, add some basic details for your new course</h1>
+            <h1 className='font-bold text-lg md:text-xl'>Let's add course, add some basic details for your new course</h1>
 
-            <form className='flex flex-col mt-14 text-lg gap-5 ' onSubmit={handleSubmit}>
+            <form className='flex flex-col mt-14 text-sm md:text-lg gap-3 md:gap-5 ' onSubmit={handleSubmit}>
                 <label htmlFor="title">Title</label>
                 <input type="text" onChange={handleChange} name="title" value={title}  placeholder='Enter course title' className='p-2 rounded-xl border-2 border-black outline-none' />
 
@@ -76,7 +76,7 @@ const AddCourse = () => {
                     <option value="python">Python</option>
                 </select>
 
-                <div className='w-[30%] mt-5 text-md font-semibold'>
+                <div className='md:w-[30%] mt-5 text-md font-semibold'>
                     <button type="submit" className='px-4 py-1 mr-10 bg-black text-white rounded-xl cursor-pointer hover:bg-white hover:text-black'> Create </button> 
                     <button type="button" className='px-4 py-1 bg-black text-white rounded-xl cursor-pointer hover:bg-white hover:text-black' onClick={handleCancel}> Cancel </button> 
                 </div>
