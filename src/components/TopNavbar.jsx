@@ -15,12 +15,13 @@ const TopNavbar = () => {
 
 
   return (
-    <div className='h-20 w-full shadow-xl flex justify-around items-center overflow-x-hidden'>
+    <div className='ml-[20%] gap-[60%] h-20 w-full shadow-xl flex items-center overflow-hidden'>
+      
       <div>
         <Link to="/"> <h1 className='font-bold text-xl md:text-2xl ml-12'>SkillSpring</h1> </Link> 
       </div>
 
-      <div className='ml-40'>
+      <div className='overflow-hidden'>
         <Link to="/dashboard"> 
             <img src={profilePhoto?profilePhoto:emptyProfilePicture} alt="profilePicture" className="h-12 w-12 rounded-full object-cover border-2 border-white" />
         </Link> 

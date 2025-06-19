@@ -38,9 +38,9 @@ const CourseTable = () => {
         />
       }
 
-      {/* {sideBarOpen &&
+      {sideBarOpen &&
                     <div className='z-40 inset-0 bg-white/30 backdrop-blur-sm fixed md:hidden' onClick={() => setSideBarOpen(false)}>
-                    </div>} */}
+                    </div>}
 
       <div className=' px-5 md:px-16 mt-10'>
         <Link to="/admin/create">  <button className='px-4 py-1 bg-black text-white rounded-xl cursor-pointer'> Create a new course </button>  </Link>
