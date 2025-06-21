@@ -15,7 +15,7 @@ const TopNavbar = () => {
 
 
   return (
-    <div className='ml-[20%] gap-[60%] h-20 w-full shadow-xl flex items-center overflow-hidden'>
+    <div className='md:ml-[20%] md:gap-[60%] gap-[40%] h-20 w-full shadow-xl flex items-center overflow-hidden'>
       
       <div>
         <Link to="/"> <h1 className='font-bold text-xl md:text-2xl ml-12'>SkillSpring</h1> </Link> 

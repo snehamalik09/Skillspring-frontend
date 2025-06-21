@@ -45,6 +45,14 @@ export const courseApi = createApi({
             providesTags: ['Course']
         }),
 
+        getPurchasedCoursesOfCreator: builder.query({
+            query: () => ({
+                url: 'purchasedCourses',
+                method: 'GET',
+            }),
+            providesTags: ['Course']
+        }),
+
         getCourseById: builder.query({
             query: (courseId) => ({
                 url: `course/${courseId}`,
@@ -127,5 +135,5 @@ export const courseApi = createApi({
     })
 })
 
-export const { useCreateCourseMutation, useGetSearchCoursesQuery , useTogglePublishCourseMutation, useDeleteLectureMutation, useEnrolledCoursesQuery, useGetCoursesByCreatorQuery, useGetCourseByIdQuery, useUpdateCourseByIdMutation, useDeleteCourseByIdMutation, useCreateLectureMutation, useGetLectureQuery, useUpdateLectureMutation, useGetLectureByIdQuery } = courseApi;
+export const { useCreateCourseMutation, useGetSearchCoursesQuery , useGetPurchasedCoursesOfCreatorQuery ,useTogglePublishCourseMutation, useDeleteLectureMutation, useEnrolledCoursesQuery, useGetCoursesByCreatorQuery, useGetCourseByIdQuery, useUpdateCourseByIdMutation, useDeleteCourseByIdMutation, useCreateLectureMutation, useGetLectureQuery, useUpdateLectureMutation, useGetLectureByIdQuery } = courseApi;
 

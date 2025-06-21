@@ -12,7 +12,8 @@ const Sidebar = () => {
     }
 
     return (
-        <>
+        
+        <div className='w-full overflow-x-hidden'>
             <TopNavbar />
  
             <div className="flex overflow-x-hidden">
@@ -36,7 +37,7 @@ const Sidebar = () => {
                     <Outlet context={{ sideBarOpen, setSideBarOpen }} />
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 
