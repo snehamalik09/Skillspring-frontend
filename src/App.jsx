@@ -25,18 +25,20 @@ import { useDispatch } from 'react-redux';
 import { userLoggedIn, userLoggedOut } from './features/authSlice.js';
 import { useGetUserQuery } from './features/api/authApi.js';
 import Contact from './components/Contact.jsx';
+import { ProtectedAdminRoute } from './components/ProtectedRoute.jsx';
 
 function App() {
-//   const dispatch = useDispatch();
-//   const { data, error, isLoading } = useGetUserQuery();
+  
+  const dispatch = useDispatch();
+  const { data, error, isLoading } = useGetUserQuery();
 
-//   useEffect(() => {
-//   if (data?.user) {
-//     dispatch(userLoggedIn({ user: data.user }));
-//   } else if (error) {
-//     dispatch(userLoggedOut()); 
-//   }
-// }, [data, error, dispatch]);
+  useEffect(() => {
+  if (data?.user) {
+    dispatch(userLoggedIn({ user: data.user }));
+  } else if (error) {
+    dispatch(userLoggedOut()); 
+  }
+}, [data, error, dispatch]);
 
 
 
@@ -55,7 +57,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard/>}></Route>
         <Route path="/paymentSuccess" element={<PaymentSuccess/>}></Route>
         <Route path="/PaymentFailed" element={<PaymentFailed/>}></Route>
-        <Route path="/admin" element={<Sidebar/>}>
+        <Route path="/admin" element={ <ProtectedAdminRoute><Sidebar/></ProtectedAdminRoute> }>
             <Route index element={<AdminDashboard/>} /> 
             <Route path="courses" element={<CourseTable/>} /> 
             <Route path="create" element={<AddCourse/>} /> 

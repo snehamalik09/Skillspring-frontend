@@ -147,6 +147,11 @@ function Login() {
 
                     <input type="password" name="password" placeholder="Create Password" value={signupInput.password} onChange={handleChange} className="p-2 border-2 border-black rounded-lg m-2" />
 
+                    <select className="p-2 border-2 border-black rounded-lg m-2 text-gray-500">
+                      <option value="instructor">Instrutor</option>
+                      <option value="student">Student</option>
+                    </select>
+
                     <button type="submit" className="py-[1%] px-[4%] rounded-md text-white bg-[#192A88] mt-[5%] font-bold cursor-pointer transition duration-200 hover:scale-105 active:scale-95">Register</button>
 
                     <p className='font-normal text-sm text-center mt-4'>Already have an account ? <button className='font-bold cursor-pointer' onClick={() => { setActiveTab(true) }}> Sign In</button> </p>

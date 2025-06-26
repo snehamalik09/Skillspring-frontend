@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 // Initial state for authentication
 const initialState = {
     user: null, // Stores user details when logged in
-    isAuthenticated: false // Boolean flag to check if user is authenticated
+    isAuthenticated: false, // Boolean flag to check if user is authenticated
+    loading:true
 };
 
 
@@ -18,12 +19,15 @@ const authSlice = createSlice({
         userLoggedIn: (state, action) => {
             state.user = action.payload.user; // Storing user details
             state.isAuthenticated = true; // Setting authentication status to true
+            state.loading=false;
         },
         // Action to log out the user
         userLoggedOut: (state) => {
             state.user = null; // Clearing user details
             state.isAuthenticated = false; // Setting authentication status to false
-        }
+            state.loading=false;
+        },
+
     },
 });
 
