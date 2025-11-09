@@ -85,7 +85,7 @@ function Dashboard() {
                     w-3/4 p-4 md:static md:h-screen md:w-1/3 lg:w-1/4 md:p-6
                     ${sideBarOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}>
 
-                    <FaArrowLeft className='cursor-pointer' onClick={handleToggle} />
+                    <FaArrowLeft className='cursor-pointer md:hidden' onClick={handleToggle} />
                     <div className="flex flex-col items-center text-center">
                         <img
                             src={user?.profilePhoto || emptyProfilePicture}

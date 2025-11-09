@@ -15,6 +15,7 @@ const Navbar = ({ handleScrollToContact }) => {
   const location = useLocation();
   const userDetails = useSelector((state) => state.auth);
   const isLoggedIn = userDetails.isAuthenticated;
+  const role = userDetails?.user?.role;
   const [openNavbar, setOpenNavbar] = useState(false);
 
 useEffect(() => {
@@ -85,10 +86,16 @@ useEffect(() => {
           <div className={` mobileNav absolute top-0 left-0 w-full h-[50%] justify-center items-center bg-[#ecf0fedc] backdrop-blur-sm z-[100] ${openNavbar ? 'flex' : 'hidden'} `}>
             <ul className="font-semibold flex flex-col gap-10 text-xl">
               <li className="transition duration-200 hover:text-[#192A88] hover:scale-105 active:scale-95" onClick={() => handleClick("/")}>Home</li>
-              <li className="transition duration-200 hover:text-[#192A88] hover:scale-105 active:scale-95" onClick={() => handleClick("/dashboard")}>Dashboard</li>
+              {isLoggedIn &&
+                <li className="transition duration-200 hover:text-[#192A88] hover:scale-105 active:scale-95" onClick={() => handleClick(role==='instructor' ? '/admin' : "/dashboard")}> Dashboard </li>
+              }
               <li className="transition duration-200 hover:text-[#192A88] hover:scale-105 active:scale-95" onClick={handleContactClick}>Contact</li>
 
-              <li className="transition duration-200 hover:text-[#192A88] hover:scale-105 active:scale-95" onClick={() => handleClick("/courses")}> Courses</li>
+              {isLoggedIn && role==='instructor' &&
+                <li className="transition duration-200 hover:text-[#192A88] hover:scale-105 active:scale-95" onClick={() => handleClick("/admin/create")}> Create Course </li>
+              }
+
+              <li className="transition duration-200 hover:text-[#192A88] hover:scale-105 active:scale-95" onClick={() => handleClick( role==='instructor'? '/admin/courses' : '/courses')}> {isLoggedIn && role==='instructor' ? 'My Courses' : 'Courses'} </li>
               {!isLoggedIn ? (
                 <li className="transition duration-200 hover:text-[#192A88] hover:scale-105 active:scale-95"><Link to="/login">Login</Link></li>
               ) : (
@@ -99,10 +106,16 @@ useEffect(() => {
           <ul className="gap-10 font-semibold hidden md:flex">
             <li className="transition duration-200 hover:text-[#192A88] hover:scale-105 active:scale-95" ><Link to="/">Home</Link></li>
             {/* <li className="transition duration-200 hover:text-[#192A88] hover:scale-105 active:scale-95" onClick={() => handleClick("/")}>About</li> */}
-            <li className="transition duration-200 hover:text-[#192A88] hover:scale-105 active:scale-95" onClick={() => handleClick("/dashboard")}>Dashboard</li>
+            {isLoggedIn &&  <li className="transition duration-200 hover:text-[#192A88] hover:scale-105 active:scale-95" onClick={() => handleClick(role==='instructor' ? '/admin' : "/dashboard")}> Dashboard </li> }
+
+            {isLoggedIn && role==='instructor' &&
+                <li className="transition duration-200 hover:text-[#192A88] hover:scale-105 active:scale-95" onClick={() => handleClick("/admin/create")}> Create Course </li>
+              }
+
             <li className="transition duration-200 hover:text-[#192A88] hover:scale-105 active:scale-95" onClick={handleContactClick}>Contact</li>
 
-            <li className="transition duration-200 hover:text-[#192A88] hover:scale-105 active:scale-95" onClick={() => handleClick("/courses")}> Courses</li>
+            <li className="transition duration-200 hover:text-[#192A88] hover:scale-105 active:scale-95" onClick={() => handleClick( role==='instructor'? '/admin/courses' : '/courses')}> {isLoggedIn && role==='instructor' ? 'My Courses' : 'Courses'} </li>
+
             {!isLoggedIn ? (
               <li className="transition duration-200 hover:text-[#192A88] hover:scale-105 active:scale-95"><Link to="/login">Login</Link></li>
             ) : (

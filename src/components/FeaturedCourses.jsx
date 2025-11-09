@@ -7,13 +7,13 @@ import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
 
 
 
-
 const FeaturedCourses = () => {
-    const { data: courses, isLoading } = useGetPublishedCoursesQuery();
+    const { data: courses, issLoading } = useGetPublishedCoursesQuery();
     const userDetails = useSelector((state) => state.auth);
     const isLoggedIn = userDetails.isAuthenticated;
     const navigate = useNavigate();
     const card = useRef(null);
+    const isLoading = true;
 
     const featured = courses?.data?.slice(0, 4) || [];
 
@@ -57,6 +57,23 @@ const FeaturedCourses = () => {
         );
     };
 
+    const CourseSkeleton = () => {
+
+        return (
+            <div className='flex flex-col min-w-[250px] md:min-w-[350px] max-w-[28%] rounded-xl shadow-2xl shadow-gray-400 cursor-pointer' >
+
+                <div  className='md:h-48 h-36 w-full bg-gray-400 border-b-2 border-black' > </div>
+
+                <div className='p-6'>
+                    <h1 className='font-bold mb-2 bg-gray-400 '></h1>
+                    <div className='mb-6 hidden md:block bg-gray-400 ' />
+                </div>
+
+
+            </div>
+        );
+    };
+
     const ExploreAllCard = () => {
         return (
             <div
@@ -89,10 +106,12 @@ const FeaturedCourses = () => {
 
                 <button className='absolute top-1/2 md:top-2/3 right-10 scale-150 cursor-pointer p-2' onClick={() => scroll('right')}> <FaArrowAltCircleRight /> </button>
 
-                {
-                    featured?.map((course) => (
+                { isLoading ? (
+                    Array(4).fill().map((_, index) => <CourseSkeleton key={index} />)
+                ) :
+                    (featured?.map((course) => (
                         <CourseCard key={course._id} course={course} />
-                    ))
+                    )))
                 }
                 < ExploreAllCard />
             </div>

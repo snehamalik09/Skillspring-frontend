@@ -20,5 +20,18 @@
   scrollbar-width: none;
 }
 
+.page-not-found{
+  background-image: url('./assets/PageNotFoundImage.jpg');
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media (max-width:640px){
+  .page-not-found{
+    background-image: linear-gradient(to bottom, #a0c4ff, #8ecae6, #7aa2cc);
+  }
+}
+
 
   

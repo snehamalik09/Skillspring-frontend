@@ -48,7 +48,7 @@ const CourseCard = ({ course, user }) => {
           <p className='text-sm text-gray-700 leading-relaxed mb-4 hidden lg:flex' dangerouslySetInnerHTML={{ __html: truncateText(course?.description, isDesktop) }} /> 
         </div>
 
-        <button className="w-fit bg-[#192A88] text-white px-3 py-2 lg:px-5 lg:py-2.5 rounded-md hover:bg-black transition-all duration-200 text-sm font-medium border border-[#192A88] hover:border-black hover:scale-105 active:scale-95">
+        <button className="w-fit cursor-pointer bg-[#192A88] text-white px-3 py-2 lg:px-5 lg:py-2.5 rounded-md hover:bg-black transition-all duration-200 text-sm font-medium border border-[#192A88] hover:border-black hover:scale-105 active:scale-95">
           {isEnrolled ? "Continue Course" : "Enroll Now"}
         </button>
       </div>

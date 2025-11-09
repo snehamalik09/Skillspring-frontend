@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import TopNavbar from '../../components/TopNavbar';
 import { MdDashboard, MdAssignment } from "react-icons/md";
+import { CgProfile } from "react-icons/cg";
+
 
 const Sidebar = () => {
     const [sideBarOpen, setSideBarOpen] = useState(false);
@@ -27,6 +29,12 @@ const Sidebar = () => {
                         <li className="font-semibold text-lg hover:text-blue-700">
                             <Link to="/admin/courses" className='flex items-center gap-2'>
                                 <MdAssignment className="text-xl" /> Courses
+                            </Link>
+                        </li>
+
+                        <li className="font-semibold text-lg hover:text-blue-700">
+                            <Link to="/dashboard" className='flex items-center gap-2'>
+                                <CgProfile className="text-xl" /> My Profile
                             </Link>
                         </li>
                     </ul>

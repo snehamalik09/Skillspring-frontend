@@ -25,7 +25,8 @@ import { useDispatch } from 'react-redux';
 import { userLoggedIn, userLoggedOut } from './features/authSlice.js';
 import { useGetUserQuery } from './features/api/authApi.js';
 import Contact from './components/Contact.jsx';
-import { ProtectedAdminRoute } from './components/ProtectedRoute.jsx';
+import { ProtectedAdminRoute, ProtectedCourseRoute } from './components/ProtectedRoute.jsx';
+import PageNotFound from './Pages/PageNotFound.jsx';
 
 function App() {
   
@@ -51,7 +52,7 @@ function App() {
         <Route path="/courses" element={<Courses/>}></Route>
         <Route path="/contact" element={<Contact/>}></Route>
         <Route path="/courses/search" element={<SearchPage/>}></Route>
-        <Route path="/course-progress/:courseId" element={<CourseProgress/>}></Route>
+        <Route path="/course-progress/:courseId" element={ <ProtectedCourseRoute><CourseProgress/></ProtectedCourseRoute> }></Route>
         <Route path="/courses/course-details/:courseId" element={<CourseDetails/>}></Route>
         <Route path="/mycourses" element={<MyCourses/>}></Route>
         <Route path="/dashboard" element={<Dashboard/>}></Route>
@@ -65,6 +66,7 @@ function App() {
             <Route path="course/:courseId/lecture" element={<CreateLecture/>} />   
             <Route path="course/:courseId/lecture/:lectureId" element={<EditLecture/>} />   
         </Route>
+        <Route path="*" element={<PageNotFound/>} />   
       </Routes>
     </BrowserRouter>
 
